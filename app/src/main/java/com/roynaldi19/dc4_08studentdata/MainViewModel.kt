@@ -1,10 +1,10 @@
-package com.dicoding.mystudentdata
+package com.roynaldi19.dc4_08studentdata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.dicoding.mystudentdata.database.Student
+import com.roynaldi19.dc4_08studentdata.database.Student
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val studentRepository: StudentRepository) : ViewModel() {

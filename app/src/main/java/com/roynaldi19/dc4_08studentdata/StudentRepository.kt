@@ -1,9 +1,9 @@
-package com.dicoding.mystudentdata
+package com.roynaldi19.dc4_08studentdata
 
 import androidx.lifecycle.LiveData
-import com.dicoding.mystudentdata.database.Student
-import com.dicoding.mystudentdata.database.StudentDao
-import com.dicoding.mystudentdata.helper.InitialDataSource
+import com.roynaldi19.dc4_08studentdata.database.Student
+import com.roynaldi19.dc4_08studentdata.database.StudentDao
+import com.roynaldi19.dc4_08studentdata.helper.InitialDataSource
 
 class StudentRepository(private val studentDao: StudentDao) {
     fun getAllStudent(): LiveData<List<Student>> = studentDao.getAllStudent()

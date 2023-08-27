@@ -1,8 +1,8 @@
-package com.dicoding.mystudentdata.helper
+package com.roynaldi19.dc4_08studentdata.helper
 
-import com.dicoding.mystudentdata.database.Course
-import com.dicoding.mystudentdata.database.Student
-import com.dicoding.mystudentdata.database.University
+import com.roynaldi19.dc4_08studentdata.database.Course
+import com.roynaldi19.dc4_08studentdata.database.Student
+import com.roynaldi19.dc4_08studentdata.database.University
 
 object InitialDataSource {
     fun getUniversities(): List<University> {

@@ -1,4 +1,4 @@
-package com.dicoding.mystudentdata.database
+package com.roynaldi19.dc4_08studentdata.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

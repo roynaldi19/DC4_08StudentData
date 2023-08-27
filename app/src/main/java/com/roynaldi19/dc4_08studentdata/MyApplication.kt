@@ -1,7 +1,7 @@
-package com.dicoding.mystudentdata
+package com.roynaldi19.dc4_08studentdata
 
 import android.app.Application
-import com.dicoding.mystudentdata.database.StudentDatabase
+import com.roynaldi19.dc4_08studentdata.database.StudentDatabase
 
 class MyApplication : Application() {
     val database by lazy { StudentDatabase.getDatabase(this) }

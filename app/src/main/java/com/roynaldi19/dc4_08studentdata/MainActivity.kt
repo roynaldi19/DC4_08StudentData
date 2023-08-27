@@ -1,4 +1,4 @@
-package com.dicoding.mystudentdata
+package com.roynaldi19.dc4_08studentdata
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.mystudentdata.adapter.StudentListAdapter
-import com.dicoding.mystudentdata.databinding.ActivityMainBinding
+import com.roynaldi19.dc4_08studentdata.adapter.StudentListAdapter
+import com.roynaldi19.dc4_08studentdata.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

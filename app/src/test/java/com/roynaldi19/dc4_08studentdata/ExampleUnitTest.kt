@@ -1,4 +1,4 @@
-package com.dicoding.mystudentdata
+package com.roynaldi19.dc4_08studentdata
 
 import org.junit.Test
 

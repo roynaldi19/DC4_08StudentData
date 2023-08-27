@@ -1,12 +1,12 @@
-package com.dicoding.mystudentdata.adapter
+package com.roynaldi19.dc4_08studentdata.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.mystudentdata.database.Student
-import com.dicoding.mystudentdata.databinding.ItemStudentBinding
+import com.roynaldi19.dc4_08studentdata.database.Student
+import com.roynaldi19.dc4_08studentdata.databinding.ItemStudentBinding
 
 class StudentListAdapter :
     ListAdapter<Student, StudentListAdapter.WordViewHolder>(WordsComparator()) {
