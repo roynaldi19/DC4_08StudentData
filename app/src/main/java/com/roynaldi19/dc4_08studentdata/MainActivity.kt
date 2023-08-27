@@ -2,10 +2,12 @@ package com.roynaldi19.dc4_08studentdata
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.roynaldi19.dc4_08studentdata.adapter.StudentAndUniversityListAdapter
 import com.roynaldi19.dc4_08studentdata.adapter.StudentListAdapter
 import com.roynaldi19.dc4_08studentdata.databinding.ActivityMainBinding
 
@@ -58,12 +60,18 @@ class MainActivity : AppCompatActivity() {
     private fun getStudent() {
         val adapter = StudentListAdapter()
         binding.rvStudent.adapter = adapter
-        mainViewModel.getAllStudent().observe(this, {
+        mainViewModel.getAllStudent().observe(this) {
             adapter.submitList(it)
-        })
+        }
     }
 
     private fun getStudentAndUniversity() {
+        val adapter = StudentAndUniversityListAdapter()
+        binding.rvStudent.adapter = adapter
+        mainViewModel.getAllStudentAndUniversity().observe(this){
+            adapter.submitList(it)
+            Log.d(TAG, "getStudentAndUniversity: $it")
+        }
         
     }
 
@@ -74,6 +82,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun getStudentWithCourse() {
 
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 
 }
