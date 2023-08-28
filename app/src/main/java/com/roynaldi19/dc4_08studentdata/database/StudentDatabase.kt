@@ -1,16 +1,29 @@
 package com.roynaldi19.dc4_08studentdata.database
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
+import androidx.room.RenameColumn
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.AutoMigrationSpec
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.roynaldi19.dc4_08studentdata.helper.InitialDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Student::class, University::class, Course::class, CourseStudentCrossRef::class], version = 1, exportSchema = false)
+@Database(
+    entities = [Student::class, University::class, Course::class, CourseStudentCrossRef::class],
+    version = 2,
+    autoMigrations = [
+        AutoMigration(from = 1, to = 2, spec = StudentDatabase.MyAutoMigration::class),
+    ],
+    exportSchema = true
+)
 abstract class StudentDatabase : RoomDatabase() {
+
+    @RenameColumn(tableName = "University", fromColumnName = "name", toColumnName = "universityName")
+    class MyAutoMigration : AutoMigrationSpec
 
     abstract fun studentDao(): StudentDao
 

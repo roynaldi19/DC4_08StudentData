@@ -19,6 +19,7 @@ data class Student(
 data class University(
     @PrimaryKey
     val universityId: Int,
+    @ColumnInfo(name = "universityName")
     val name: String,
 )
 
