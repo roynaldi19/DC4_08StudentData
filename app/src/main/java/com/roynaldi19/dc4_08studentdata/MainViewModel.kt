@@ -1,18 +1,32 @@
 package com.roynaldi19.dc4_08studentdata
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import com.roynaldi19.dc4_08studentdata.database.Student
 import com.roynaldi19.dc4_08studentdata.database.StudentAndUniversity
 import com.roynaldi19.dc4_08studentdata.database.StudentWithCourse
 import com.roynaldi19.dc4_08studentdata.database.UniversityAndStudent
+import com.roynaldi19.dc4_08studentdata.helper.SortType
 import kotlinx.coroutines.launch
 
 class MainViewModel(private val studentRepository: StudentRepository) : ViewModel() {
+    private val _sort = MutableLiveData<SortType>()
 
-    fun getAllStudent(): LiveData<List<Student>> = studentRepository.getAllStudent()
+    init {
+        _sort.value = SortType.ASCENDING
+    }
+
+    fun changeSortType(sortType: SortType) {
+        _sort.value = sortType
+    }
+
+    fun getAllStudent(): LiveData<List<Student>> = _sort.switchMap {
+        studentRepository.getAllStudent(it)
+    }
 
     fun getAllStudentAndUniversity(): LiveData<List<StudentAndUniversity>> = studentRepository.getAllStudentAndUniversity()
 
