@@ -1,6 +1,9 @@
 package com.roynaldi19.dc4_08studentdata.database
 
-import androidx.room.*
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.Relation
 
 @Entity
 data class Student(
@@ -34,4 +37,16 @@ data class StudentAndUniversity(
     )
 
     val university: University? = null
+)
+
+data class UniversityAndStudent(
+    @Embedded
+    val university: University,
+
+    @Relation(
+        parentColumn = "universityId",
+        entityColumn = "univId"
+    )
+
+    val student: List<Student>
 )

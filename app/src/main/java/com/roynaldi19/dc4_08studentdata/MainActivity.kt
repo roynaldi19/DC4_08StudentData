@@ -7,8 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.roynaldi19.dc4_08studentdata.adapter.StudentAndUniversityListAdapter
+import com.roynaldi19.dc4_08studentdata.adapter.StudentAndUniversityAdapter
 import com.roynaldi19.dc4_08studentdata.adapter.StudentListAdapter
+import com.roynaldi19.dc4_08studentdata.adapter.UniversityAndStudentAdapter
 import com.roynaldi19.dc4_08studentdata.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getStudentAndUniversity() {
-        val adapter = StudentAndUniversityListAdapter()
+        val adapter = StudentAndUniversityAdapter()
         binding.rvStudent.adapter = adapter
         mainViewModel.getAllStudentAndUniversity().observe(this){
             adapter.submitList(it)
@@ -76,6 +77,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getUniversityAndStudent() {
+        val adapter = UniversityAndStudentAdapter()
+        binding.rvStudent.adapter = adapter
+        mainViewModel.getAllUniversityAndStudent().observe(this){
+            adapter.submitList(it)
+            Log.d(TAG, "getUniversityAndStudent: $it")
+        }
 
     }
 
