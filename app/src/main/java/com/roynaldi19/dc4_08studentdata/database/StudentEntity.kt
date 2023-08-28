@@ -1,7 +1,9 @@
 package com.roynaldi19.dc4_08studentdata.database
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.Junction
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 
@@ -49,4 +51,27 @@ data class UniversityAndStudent(
     )
 
     val student: List<Student>
+)
+
+@Entity(primaryKeys = ["sId", "cId"])
+data class CourseStudentCrossRef(
+    val sId: Int,
+    @ColumnInfo(index = true)
+    val cId: Int,
+)
+
+data class StudentWithCourse(
+    @Embedded
+    val student: Student,
+    @Relation(
+        parentColumn = "studentId",
+        entity = Course::class,
+        entityColumn = "courseId",
+        associateBy = Junction(
+            value = CourseStudentCrossRef::class,
+            parentColumn = "sId",
+            entityColumn = "cId"
+        )
+    )
+    val course: List<Course>
 )

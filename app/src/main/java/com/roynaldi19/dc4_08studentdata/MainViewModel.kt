@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.roynaldi19.dc4_08studentdata.database.Student
 import com.roynaldi19.dc4_08studentdata.database.StudentAndUniversity
+import com.roynaldi19.dc4_08studentdata.database.StudentWithCourse
 import com.roynaldi19.dc4_08studentdata.database.UniversityAndStudent
 import kotlinx.coroutines.launch
 
@@ -20,6 +21,8 @@ class MainViewModel(private val studentRepository: StudentRepository) : ViewMode
     fun getAllStudentAndUniversity(): LiveData<List<StudentAndUniversity>> = studentRepository.getAllStudentAndUniversity()
 
     fun getAllUniversityAndStudent(): LiveData<List<UniversityAndStudent>> = studentRepository.getAllUniversityAndStudent()
+
+    fun getAllStudentWhitCourse(): LiveData<List<StudentWithCourse>> = studentRepository.getAllStudentWhitCourse()
 
     private fun insertAllData() = viewModelScope.launch {
         studentRepository.insertAllData()

@@ -9,7 +9,9 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.roynaldi19.dc4_08studentdata.adapter.StudentAndUniversityAdapter
 import com.roynaldi19.dc4_08studentdata.adapter.StudentListAdapter
+import com.roynaldi19.dc4_08studentdata.adapter.StudentWhitCourseAdapter
 import com.roynaldi19.dc4_08studentdata.adapter.UniversityAndStudentAdapter
+import com.roynaldi19.dc4_08studentdata.database.StudentWithCourse
 import com.roynaldi19.dc4_08studentdata.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -88,6 +90,13 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun getStudentWithCourse() {
+        val adapter = StudentWhitCourseAdapter()
+        binding.rvStudent.adapter = adapter
+        mainViewModel.getAllStudentWhitCourse().observe(this){
+            adapter.submitList(it)
+            Log.d(TAG, "getStudentWithCourse: $it")
+
+        }
 
     }
 
